@@ -17,9 +17,6 @@ on:
         required: true
         type: choice
         options:
-          - 'qihoo-c301'
-          - 'phicomm-k3'
-          - 'tenda-ac9'
           - 'xiaomi-ax3600'
           - 'xiaomi-ax9000'
           - 'h3c-magic-nx30-pro'
@@ -93,6 +90,11 @@ jobs:
       EXTRA_STR: _some
     steps:
 
+      - uses: actions/checkout@v4
+      # 你的其他步骤...
+      - name: SSH 远程调试（tmate）
+        uses: mxschmitt/action-tmate@v3
+        
       - name: Hide sensitive inputs
         if: github.event_name == 'workflow_dispatch'
         uses: hugcabbage/action-hide-sensitive-inputs@v1
